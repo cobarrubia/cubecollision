@@ -6,17 +6,15 @@ namespace DrawLibrary
     /// <summary>
     /// class to manage cube creation and collisioning volume
     /// </summary>
-    sealed public class Cube
+    public sealed class Cube: Vector
     {
         public double Size { private set; get; }
-        public Point Center { private set; get; }
-
 
         /// <summary>
         /// Contatin the data of min and max vertices of cube.
         /// the format is {x0,y0,z0,x1,y1,z1} 
         /// </summary>
-        private double[] data = new double[6];
+        private readonly double[] data = new double[6];
 
         private Cube()
         {
@@ -37,7 +35,7 @@ namespace DrawLibrary
             {
                 throw new ArgumentException(nameof(size), "Cannot support negative value or zero size");
             }
-            Cube cube = new Cube() { Size = size, Center = new Point(x, y, z) };
+            Cube cube = new Cube() { Size = size, X=x, Y=y, Z=z};
 
             size /= 2;
             cube.data[0] = x - size;
